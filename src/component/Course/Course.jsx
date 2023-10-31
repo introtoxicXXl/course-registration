@@ -3,11 +3,11 @@ import { FaReadme } from 'react-icons/fa';
 
 Course.propTypes = {
     course: PropTypes.object.isRequired,
-    handelAddToCart:PropTypes.func.isRequired,
+    handelAddToCart: PropTypes.func.isRequired
 };
 
-function Course({ course,handelAddToCart }) {
-    const {img,title,credit,description,price } = course;
+function Course({ course, handelAddToCart }) {
+    const { img, title, credit, description, price } = course;
 
     return (
         <div className="card bg-base-100 shadow-xl p-4 space-y-3">
@@ -20,7 +20,7 @@ function Course({ course,handelAddToCart }) {
                     <p className='flex items-center'> <span className='mr-3 text-lg'><FaReadme></FaReadme> </span>Credit: {credit}hr</p>
                 </div>
                 <div className="items-center">
-                    <button onClick={()=>handelAddToCart(course)} className="btn btn-info text-white w-full">Buy Now</button>
+                    <button onClick={() => handelAddToCart(course)} className="btn btn-info text-white w-full">Buy Now</button>
                 </div>
             </div>
         </div>

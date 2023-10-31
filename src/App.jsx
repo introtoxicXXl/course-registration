@@ -7,21 +7,21 @@ import swal from 'sweetalert';
 
 function App() {
   const [carts, setCarts] = useState([]);
+  const [prices, setPrices] = useState(0);
   const [credits, setCredits] = useState(20);
   const [creditHour, setCreditHour] = useState(0);
-  const [prices, setPrices] = useState(0);
 
 
   const handelAddToCart = course => {
     const { price, credit } = course;
+    const remainingCredits = credits - credit;
+    if (remainingCredits < 0) {
+      return swal("OPPS", "Your credit hour is finished", "error");
+    }
     if (carts.includes(course)) {
       return swal("OPPS", "You already add this course", "error");
     } else {
       setCarts([...carts, course]);
-    }
-    const remainingCredits = credits - credit;
-    if (remainingCredits < 0) {
-      return swal("OPPS", "Your credit hour is finished", "error");
     }
     setCredits(remainingCredits);
     setCreditHour(creditHour + credit);
@@ -32,7 +32,7 @@ function App() {
     <>
       <div className='container mx-auto'>
         <Header></Header>
-        <div className='flex'>
+        <div className='flex md:flex-row flex-col'>
           <Courses
             handelAddToCart={handelAddToCart}
           ></Courses>

@@ -9,7 +9,7 @@ Cart.propTypes = {
 
 function Cart({carts,credit,creditHour,prices}) {
     return (
-        <div className='w-1/4 ml-4'>
+        <div className='w-full md:w-1/4 md:ml-4 ml-0 md:mt-0 mt-4'>
             <div className='bg-white p-6 rounded-lg'>
                 <div>
                     <h2 className='text-lg font-bold text-sky-500'>Credit Hour Remaining {credit} hr</h2>

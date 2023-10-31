@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Course from '../Course/Course';
 
 Courses.propTypes = {
-    handelAddToCart:PropTypes.func.isRequired,
+    handelAddToCart:PropTypes.func.isRequired
 };
 
 function Courses({handelAddToCart}) {
@@ -15,7 +15,7 @@ function Courses({handelAddToCart}) {
             .then(data => setCourses(data))
     }, [])
     return (
-        <div className='w-3/4 grid md:grid-cols-3 gap-4'>
+        <div className='w-full md:w-3/4 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4'>
         {
             courses.map(course=><Course
             handelAddToCart={handelAddToCart} 
