@@ -9,6 +9,7 @@ function App() {
   const [carts, setCarts] = useState([]);
   const [credits, setCredits] = useState(20);
   const [creditHour, setCreditHour] = useState(0);
+  const [prices, setPrices] = useState(0);
 
 
   const handelAddToCart = course => {
@@ -23,7 +24,8 @@ function App() {
       return swal("OPPS", "Your credit hour is finished", "error");
     }
     setCredits(remainingCredits);
-    setCreditHour(creditHour+credit);
+    setCreditHour(creditHour + credit);
+    setPrices(prices + price);
   }
 
   return (
@@ -35,7 +37,8 @@ function App() {
             handelAddToCart={handelAddToCart}
           ></Courses>
           <Cart
-          creditHour={creditHour}
+            prices={prices}
+            creditHour={creditHour}
             credit={credits}
             carts={carts}
           ></Cart>
