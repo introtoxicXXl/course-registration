@@ -8,6 +8,7 @@ import swal from 'sweetalert';
 function App() {
   const [carts, setCarts] = useState([]);
   const [credits, setCredits] = useState(20);
+  const [creditHour, setCreditHour] = useState(0);
 
 
   const handelAddToCart = course => {
@@ -17,11 +18,12 @@ function App() {
     } else {
       setCarts([...carts, course]);
     }
-    const remainingCridets = credits - credit;
-    if (remainingCridets < 0) {
+    const remainingCredits = credits - credit;
+    if (remainingCredits < 0) {
       return swal("OPPS", "Your credit hour is finished", "error");
     }
-    setCredits(remainingCridets);
+    setCredits(remainingCredits);
+    setCreditHour(creditHour+credit);
   }
 
   return (
@@ -33,6 +35,7 @@ function App() {
             handelAddToCart={handelAddToCart}
           ></Courses>
           <Cart
+          creditHour={creditHour}
             credit={credits}
             carts={carts}
           ></Cart>
