@@ -14,17 +14,21 @@ function App() {
 
   const handelAddToCart = course => {
     const { price, credit } = course;
+    const remainingCreditHour = creditHour + credit;
     const remainingCredits = credits - credit;
     if (remainingCredits < 0) {
       return swal("OPPS", "Your credit hour is finished", "error");
     }
-    if (carts.includes(course)) {
-      return swal("OPPS", "You already add this course", "error");
-    } else {
-      setCarts([...carts, course]);
+    if (remainingCreditHour > 20){
+      return swal("OPPS", "your do not take more then 20 credit", "error");
     }
+      if (carts.includes(course)) {
+        return swal("OPPS", "You already select this course", "error");
+      } else {
+        setCarts([...carts, course]);
+      }
     setCredits(remainingCredits);
-    setCreditHour(creditHour + credit);
+    setCreditHour(remainingCreditHour);
     setPrices(prices + price);
   }
 
